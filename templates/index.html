@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Panel</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    nav { margin-bottom: 20px; }
+    nav a { margin-right: 15px; text-decoration: none; color: #2a7ae2; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('run') }}">Run Script</a>
+    <a href="{{ url_for('download') }}">Download Files</a>
+  </nav>
+  <h1>Admin Panel</h1>
+  <ul>
+    <li><a href="{{ url_for('students') }}">Edit Students</a></li>
+    <li><a href="{{ url_for('teachers') }}">Edit Teachers</a></li>
+    <li><a href="{{ url_for('download') }}">Download Files</a></li>
+    <li><a href="{{ url_for('import_page') }}">Import Page</a></li>
+  </ul>
+</body>
+</html>
