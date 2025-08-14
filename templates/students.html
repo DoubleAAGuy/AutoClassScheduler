@@ -1,0 +1,46 @@
+<h1>Students</h1>
+<a href="{{ url_for('run') }}">Run Page</a>
+<a href="{{ url_for('teachers') }}">Teachers Page</a>
+<a href="{{ url_for('download') }}">Download Page</a>
+<a href="{{ url_for('index') }}">Main Page</a>
+
+<!-- Save form -->
+<form method="post">
+    <input type="hidden" name="action" value="save">
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            {% for i in range(students[0]|length - 1) %}
+            <th>Subject {{ i+1 }}</th>
+            {% endfor %}
+            <th>Delete</th>
+        </tr>
+        {% for s in students %}
+        <tr>
+            <td><input type="text" name="student_id" value="{{ s[0] }}" readonly></td>
+            {% for i in range(s|length - 1) %}
+            <td><input type="text" name="student_{{ s[0] }}_subject_{{ i }}" value="{{ s[i+1] }}"></td>
+            {% endfor %}
+            <td>
+                <!-- separate delete form for each row -->
+                <form method="post" style="display:inline;">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="delete_id" value="{{ s[0] }}">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <button type="submit">Save Changes</button>
+</form>
+
+<h2>Add Student</h2>
+<form method="post">
+    <input type="hidden" name="action" value="add">
+    ID: <input type="text" name="new_id">
+    {% for i in range(7) %}
+    Subject {{ i+1 }}: <input type="text" name="new_subject_{{ i }}">
+    {% endfor %}
+    <button type="submit">Add</button>
+</form>

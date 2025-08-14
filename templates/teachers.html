@@ -1,0 +1,50 @@
+<h1>Teachers</h1>
+<a href="{{ url_for('run') }}">Run Page</a>
+<a href="{{ url_for('students') }}">Students Page</a>
+<a href="{{ url_for('download') }}">Download Page</a>
+<a href="{{ url_for('index') }}">Main Page</a>
+
+<form method="post">
+    <input type="hidden" name="action" value="save">
+    <table border="1" cellpadding="4" cellspacing="0">
+        <tr>
+            <th>ID</th>
+            <th>Subject / Size Pairs</th>
+            <th>Delete</th>
+        </tr>
+        {% for t in teachers %}
+        <tr>
+            <td><input type="text" name="teacher_id" value="{{ t[0] }}" readonly></td>
+            <td>
+                {% for pair in t[1] %}
+                    Subject: <input type="text" name="teacher_{{ t[0] }}_subject_{{ loop.index0 }}" value="{{ pair[0] }}" style="width:80px;">
+                    Size: <input type="text" name="teacher_{{ t[0] }}_size_{{ loop.index0 }}" value="{{ pair[1] }}" style="width:40px;"><br>
+                {% endfor %}
+                {% for i in range(t[1]|length, t[1]|length + 3) %}
+                    Subject: <input type="text" name="teacher_{{ t[0] }}_subject_{{ i }}" value="" style="width:80px;">
+                    Size: <input type="text" name="teacher_{{ t[0] }}_size_{{ i }}" value="" style="width:40px;"><br>
+                {% endfor %}
+            </td>
+            <td>
+                <form method="post" style="display:inline;">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="delete_id" value="{{ t[0] }}">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <button type="submit">Save Changes</button>
+</form>
+
+<h2>Add Teacher</h2>
+<form method="post">
+    <input type="hidden" name="action" value="add">
+    ID: <input type="text" name="new_id"><br>
+    {% for i in range(10) %}
+        Subject: <input type="text" name="new_subject_{{ i }}" style="width:80px;">
+        Size: <input type="text" name="new_size_{{ i }}" style="width:40px;"><br>
+    {% endfor %}
+    <button type="submit">Add</button>
+</form>
