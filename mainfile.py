@@ -1,7 +1,3 @@
-with open('students.txt', 'r') as f:
-    liness = f.readlines()
-with open('teachers.txt', 'r') as f:
-    lines = f.readlines()
 import random
 # Class to manage student limits per class per period
 class StudentLimit:
