@@ -12,9 +12,6 @@ General tips for my hosting.
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
 
 
 
