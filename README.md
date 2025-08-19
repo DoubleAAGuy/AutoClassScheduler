@@ -6,6 +6,11 @@ General tips for my hosting.
 5. Thats about it
 
 
+
+
+
+
+
 Self Hosting:
 1. Clone this repo
 2. pip install flask, random, os, re, uuid, flask_caching, subprocesses, threading, queue, re, multiprocessing, itertools, ast, collections, csv
